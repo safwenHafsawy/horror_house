@@ -29,7 +29,7 @@ const {
  */
 // create a scene, that will hold all our elements such as objects, cameras and lights.
 let scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x262837, 3, 14);
+scene.fog = new THREE.Fog(0x262837, 0, 140);
 
 /**
  ** Objects
@@ -133,6 +133,7 @@ walls.geometry.setAttribute(
   new THREE.Float32BufferAttribute(walls.geometry.attributes.uv.array, 2)
 );
 walls.castShadow = true;
+walls.receiveShadow = true;
 const roof = new THREE.Mesh(
   new THREE.ConeGeometry(3, 1, 4, 64),
   new THREE.MeshStandardMaterial({
@@ -289,7 +290,7 @@ let camera = new THREE.PerspectiveCamera(
   60,
   window.innerWidth / window.innerHeight,
   0.1,
-  20
+  200
 );
 // tell the camera where to look
 camera.position.set(0, 1.5, 15);
@@ -323,7 +324,19 @@ orbitControls.minDistance = 4;
 orbitControls.min = 0;
 orbitControls.maxPolarAngle = Math.PI * 0.5 - 0.09;
 
-// TODO shadow map optimization
+/*
+ * Shadow optimization
+ */
+
+//resizing shadowMap size
+MoonLight.shadow.mapSize.height = 1024;
+MoonLight.shadow.mapSize.width = 1024;
+MoonLight.shadow.camera.near = 4;
+MoonLight.shadow.camera.far = 30;
+
+console.log(MoonLight.shadow.camera);
+const shadowCameraHelper = new THREE.CameraHelper(MoonLight.shadow.camera);
+scene.add(shadowCameraHelper);
 
 /**
  ** Renderer
@@ -337,6 +350,7 @@ let renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setClearColor(new THREE.Color(0x262837));
 renderer.setSize(sizes.width, sizes.height);
 renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 const clock = new THREE.Clock();
 // function for re-rendering/animating the scene

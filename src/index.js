@@ -29,7 +29,7 @@ const {
  */
 // create a scene, that will hold all our elements such as objects, cameras and lights.
 let scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0x262837, 0, 140);
+scene.fog = new THREE.Fog(0x262837, 3, 14);
 
 /**
  ** Objects

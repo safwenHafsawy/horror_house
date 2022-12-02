@@ -336,6 +336,7 @@ MoonLight.shadow.camera.far = 30;
 
 console.log(MoonLight.shadow.camera);
 const shadowCameraHelper = new THREE.CameraHelper(MoonLight.shadow.camera);
+shadowCameraHelper.visible = false;
 scene.add(shadowCameraHelper);
 
 /**

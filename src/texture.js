@@ -35,18 +35,20 @@ roofNormalTexture.wrapS = THREE.RepeatWrapping;
 roofRoughnessTexture.wrapS = THREE.RepeatWrapping;
 
 //loading grass texture
-const grassColor = textureLoader.load("/grass/color.jpg");
-const grassAoTexture = textureLoader.load("/grass/ao.jpg");
-const grassHeightTexture = textureLoader.load("/grass/height.png");
-const grassNormalTexture = textureLoader.load("/grass/normal.jpg");
-const grassRoughnessTexture = textureLoader.load("/grass/roughness.jpg");
+const grassColor = textureLoader.load("grass/color.jpg");
+const grassAoTexture = textureLoader.load("grass/ao.jpg");
+const grassHeightTexture = textureLoader.load("grass/height.png");
+const grassNormalTexture = textureLoader.load("grass/normal.jpg");
+const grassRoughnessTexture = textureLoader.load(
+  "/static//grass/roughness.jpg"
+);
 //loading grave texture
-const graveColorTexture = textureLoader.load("/conc/color.jpg");
-const graveAoTexture = textureLoader.load("/conc/ao.jpg");
-const graveNormalTexture = textureLoader.load("/conc/normal.jpg");
-const graveHeightTexture = textureLoader.load("/conc/height.png");
-const graveRoughnessTexture = textureLoader.load("/conc/roughness.jpg");
-const graveMetalnessTexture = textureLoader.load("/conc/metalness.jpg");
+const graveColorTexture = textureLoader.load("conc/color.jpg");
+const graveAoTexture = textureLoader.load("conc/ao.jpg");
+const graveNormalTexture = textureLoader.load("conc/normal.jpg");
+const graveHeightTexture = textureLoader.load("conc/height.png");
+const graveRoughnessTexture = textureLoader.load("conc/roughness.jpg");
+const graveMetalnessTexture = textureLoader.load("conc/metalness.jpg");
 
 graveColorTexture.repeat.set(1, 2);
 graveAoTexture.repeat.set(1, 2);
